@@ -1,2 +1,2 @@
 # budget-app
-💰 A budget app with JavaScript.
+A front-end part of budget app.

@@ -1,22 +1,22 @@
 {
   "name": "budget-app",
   "version": "1.0.0",
-  "description": "💰 A budget app with JavaScript.",
-  "main": "index.js",
+  "description": "A home budget app.",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leonardomso/budget-app.git"
+    "url": "git+https://github.com/ArturKy/budget-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leonardomso/budget-app/issues"
+    "url": "https://github.com/ArturKy/budget-app/issues"
   },
-  "homepage": "https://github.com/leonardomso/budget-app#readme",
+  "homepage": "https://github.com/ArturKy/budget-app#readme",
   "dependencies": {
     "node-sass": "^4.7.2"
   }

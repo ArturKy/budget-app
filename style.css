@@ -107,6 +107,10 @@ body {
     border-radius: 3px;
 }
 
+.hidden {
+    display: none;
+}
+
 
 /**********************************************
 *** BOTTOM PART

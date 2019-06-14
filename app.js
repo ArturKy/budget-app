@@ -56,8 +56,7 @@ var budgetController = (function () {
     return {
         addItem: function (type, des, val) {
             var newItem, ID;
-            console.log(type + " " + des + " " + val);
-
+            
             //[1 2 3 4 5], next ID = 6
             //[1 2 4 6 8], next ID = 9
             // ID = last ID + 1
@@ -79,10 +78,46 @@ var budgetController = (function () {
             // Push it into our data structure
             data.allItems[type].push(newItem);
 
+            //Save transaction to DataBase
+            var DBParams = {
+                headers: {
+                    "content-type": "application/json"
+                },
+                method: "POST",
+                body: {
+                    "category_id": this.getCategoryID(des),
+                    "data": Date.now(),
+                    "id_user": 1,
+                    "value": val
+                }
+            };
+            fetch("http://localhost:8080/transactions/save", DBParams)
+            .then(response => response.json())
+            .then(response => console.log(JSON.stringify(response)));
+
+            console.log("DBparams " + JSON.stringify(DBParams) );
+
             // Return the new element
             return newItem;
         },
 
+        getCategoryID: function(categoryName) {
+            switch (categoryName) {
+                case 'Jedzenie': return 1; break;
+                case 'Mieszkanie/Dom': return 2; break;
+                case 'Transport': return 3; break;
+                case 'Media': return 4; break;
+                case 'Odzież': return 5; break;
+                case 'Zdrowie': return 6; break;
+                case 'Edukacja': return 7; break;
+                case 'Dzieci': return 8; break;
+                case 'Hobby': return 9; break;
+                case 'Rozrywka': return 10; break;
+                case 'Spłata długów': return 11; break;
+                case 'Oszczędności': return 12; break;
+                case 'Przychody': return 13; break;
+            }
+        },
 
         deleteItem: function (type, id) {
             var ids, index;

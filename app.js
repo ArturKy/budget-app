@@ -84,12 +84,12 @@ var budgetController = (function () {
                     "content-type": "application/json"
                 },
                 method: "POST",
-                body: {
+                body: JSON.stringify({
                     "category_id": this.getCategoryID(des),
                     "data": Date.now(),
                     "id_user": 1,
                     "value": val
-                }
+                })
             };
             fetch("http://localhost:8080/transactions/save", DBParams)
             .then(response => response.json())

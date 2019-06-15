@@ -3,13 +3,11 @@ var ctx = document.getElementById('pieChart').getContext('2d');
 fetch("http://localhost:8080/transactions/all")
 .then(response => response.json())
 .then(response => classifyExpenses(response))
-//.then(response => classifyExpenses(response))
 .then(response => createChart(response));
 
 function classifyExpenses(rawDatafromDB) {
     var id1=0;id2=0;id3=0;id4=0;id5=0;id6=0;id7=0;id8=0;id9=0;id10=0;id11=0;id12=0;
     for (var i = 0; i <= rawDatafromDB.length - 1; i++ ){ 
-        //console.log(rawDatafromDB[i]);
         switch (rawDatafromDB[i].category_id) {
             case 1: 
                 id1+=rawDatafromDB[i].value;
@@ -61,7 +59,6 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['Jedzenie', 'Mieszkanie/Dom', 'Transport', 'Media', 'Odzież', 'Zdrowie', "Edukacja", "Dzieci", "Hobby", "Rozrywka", "Spłata długów", "Oszczędności"],
         datasets: [{
-            label: '# of Votes',
             data: dataFromDB,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

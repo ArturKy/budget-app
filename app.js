@@ -79,23 +79,23 @@ var budgetController = (function () {
             data.allItems[type].push(newItem);
 
             //Save transaction to DataBase
+            var bodyy = JSON.stringify({
+                "category_id": this.getCategoryID(des),
+                "data": Date.now(),
+                "id_user": 1,
+                "value": val
+            });
+            
             var DBParams = {
                 headers: {
                     "content-type": "application/json"
                 },
                 method: "POST",
-                body: JSON.stringify({
-                    "category_id": this.getCategoryID(des),
-                    "data": Date.now(),
-                    "id_user": 1,
-                    "value": val
-                })
+                body: bodyy
             };
             fetch("http://localhost:8080/transactions/save", DBParams)
             .then(response => response.json())
             .then(response => console.log(JSON.stringify(response)));
-
-            console.log("DBparams " + JSON.stringify(DBParams) );
 
             // Return the new element
             return newItem;
